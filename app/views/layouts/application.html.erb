@@ -2,13 +2,12 @@
 <html>
 <head>
   <title>Pragprog Books Online Store</title>
-  <%= stylesheet_link_tag "scaffold" %>
   <%= stylesheet_link_tag "depot", :media => "all" %>
-  <%= javascript_include_tag :defaults %>
+  <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 
-<body id="store">
+<body class='<%= controller.controller_name %>'>
   <div id="banner">
     <%= image_tag("logo.png") %>
     <%= @page_title || "Pragmatic Bookshelf" %>
@@ -16,12 +15,18 @@
   <div id="columns">
     <div id="side">
       <div id="cart">
+        <% if @cart.line_items.empty? %>
+          style="display: none"
+        <% end %>
         <%= render @cart %>
       </div>
-      <a href="http://www....">Home</a><br />
-      <a href="http://www..../faq">Questions</a><br />
-      <a href="http://www..../news">News</a><br />
-      <a href="http://www..../contact">Contact</a><br />
+
+      <ul>
+        <li><a href="http://www....">Home</a><br /></li>
+        <li><a href="http://www..../faq">Questions</a><br /></li>
+        <li><a href="http://www..../news">News</a><br /></li>
+        <li><a href="http://www..../contact">Contact</a><br /></li>
+      </ul>
     </div>
     <div id="main">
       <%= yield %>
