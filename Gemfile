@@ -38,3 +38,5 @@ gem 'jquery-rails'
 # gem 'debugger'
 #gem 'execjs'
 gem 'therubyracer'
+
+gem 'will_paginate', '~> 3.0'
