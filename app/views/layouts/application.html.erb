@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>Pragprog Books Online Store</title>
-  <%= stylesheet_link_tag "depot", :media => "all" %>
+  <%= stylesheet_link_tag "depot", media: "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
@@ -14,12 +14,11 @@
   </div>
   <div id="columns">
     <div id="side">
-      <div id="cart">
-        <% if @cart.line_items.empty? %>
-          style="display: none"
+      <% if @cart %>
+        <%= hidden_div_if(@cart.line_items.empty?, id: 'cart') do %>
+          <%= render @cart %>
         <% end %>
-        <%= render @cart %>
-      </div>
+      <% end %>
 
       <ul>
         <li><a href="http://www....">Home</a><br /></li>
